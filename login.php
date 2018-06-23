@@ -7,14 +7,14 @@ if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === TRUE) 
 }
 
 //If user has previously selected "remember me option", his credentials are stored in cookies.
-if(isset($_COOKIE['username']) && isset($_COOKIE['password']))
+if(isset($_COOKIE['email']) && isset($_COOKIE['password']))
 {
 	//Get user credentials from cookies.
-	$username = filter_var($_COOKIE['username']);
+	$email = filter_var($_COOKIE['email']);
 	$passwd = filter_var($_COOKIE['password']);
-	$db->where ("user_name", $username);
+	$db->where ("email", $email);
 	$db->where ("passwd", $passwd);
-    $row = $db->get('admin_accounts');
+    $row = $db->get('users');
 
     if ($db->count >= 1) 
     {
@@ -26,9 +26,9 @@ if(isset($_COOKIE['username']) && isset($_COOKIE['password']))
     }
     else //Username Or password might be changed. Unset cookie
     {
-    unset($_COOKIE['username']);
+    unset($_COOKIE['email']);
     unset($_COOKIE['password']);
-    setcookie('username', null, -1, '/');
+    setcookie('email', null, -1, '/');
     setcookie('password', null, -1, '/');
     header('Location:login.php');
     exit;
@@ -45,8 +45,8 @@ include_once 'includes/header.php';
 			<div class="panel-heading">Please Sign in</div>
 			<div class="panel-body">
 				<div class="form-group">
-					<label class="control-label">username</label>
-					<input type="text" name="username" class="form-control" required="required">
+					<label class="control-label">Email Or Username</label>
+					<input type="text" name="email" class="form-control" required="required">
 				</div>
 				<div class="form-group">
 					<label class="control-label">password</label>
