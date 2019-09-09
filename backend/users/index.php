@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../../config/config.php';
-require_once '../../includes/auth_validate.php';
+require_once '../includes/auth_validate.php';
 require_once 'controllers/user_controller.php';
 
 //Only super admin is allowed to access this page
@@ -63,7 +63,7 @@ include_once '../includes/header.php';
         </div>
         <div class="col-lg-6" style="">
             <div class="page-action-links text-right">
-            <a href="add_kelas.php"> <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add new</button></a>
+            <a href="add_users.php"> <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add new</button></a>
             </div>
         </div>
 </div>

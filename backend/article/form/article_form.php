@@ -17,7 +17,7 @@ $head_text = ($operation == 'edit') ? 'Edit' : 'Add';
     <div class="form-group">
         <label class="col-md-2">Content</label>
         <div class="col-md-10">
-            <textarea name="content" class="form-control ckeditor" placeholder="text here !!!" ><?php echo((isset($article['content'])) ? $article['content'] : ''); ?></textarea>
+            <textarea name="content" class="form-control  ckeditor" placeholder="text here !!!" ><?php echo((isset($article['content'])) ? $article['content'] : ''); ?></textarea>
         </div>
     </div>
    

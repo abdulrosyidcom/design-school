@@ -11,7 +11,7 @@ class article_controller {
 	    $data_to_store['created_at'] = date('Y-m-d H:i:s');
 	    $data_to_store['updated_at'] = date('Y-m-d H:i:s');
 	    $data_to_store['date'] = date('Y-m-d H:i:s');
-	    $data_to_store['author'] = $_SESSION[user_id];
+	    $data_to_store['author'] = $_SESSION['user_id'];
 	  
 	    $last_id = $db->insert ('article', $data_to_store);
 	    if($last_id)

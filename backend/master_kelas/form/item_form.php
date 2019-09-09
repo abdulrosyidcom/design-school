@@ -12,7 +12,7 @@ $head_text = ($operation == 'edit') ? 'Edit' : 'Add';
     <div class="form-group">
         <label class="col-md-2">Nama Kelas</label>
         <div class="col-md-4">
-            <input  type="text" p class="form-control" value="<?php echo (isset($master_kelas['name'])) ? $master_kelas['name'] : ''; ?>" autocomplete="off" readonly="readonly">
+            <input  type="text" class="form-control" value="<?php echo (isset($master_kelas['name'])) ? $master_kelas['name'] : ''; ?>" autocomplete="off" readonly="readonly">
         </div>
     </div>
     <div class="form-group">

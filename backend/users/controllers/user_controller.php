@@ -52,7 +52,7 @@ class user_controller {
 		$email = $db->query($query);
 
 		if (!empty($username) || !empty($email)) {
-			$_SESSION['failure'] = "Username atau password tidak tersedia";
+			$_SESSION['failure'] = "Username atau email tidak tersedia";
 		    header('location: add_users.php');
 	    	exit();
 		}

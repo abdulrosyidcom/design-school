@@ -7,6 +7,48 @@ class kelas_controller {
 	    $data_to_store = filter_input_array(INPUT_POST);
 	    $db = getDbInstance();
 	   	// set custom array
+
+	   	if (!empty($_FILES["icon"]["name"])) {
+	    	$target_dir = "../../uploads/";
+			$target_file = $target_dir . basename($_FILES["icon"]["name"]);
+			$uploadOk = 1;
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			// Check file size
+			if ($_FILES["icon"]["size"] > 500000) {
+			    $_SESSION['failure'] = "Ukuran file anda terlalu besar";
+			    header('location: add_kelas.php');
+		    	exit();
+			    $uploadOk = 0;
+			}
+			// Allow certain file formats
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+			&& $imageFileType != "gif" ) {
+			    $_SESSION['failure'] = "File yang anda upload bukan gambar";
+			    header('location: add_kelas.php');
+		    	exit();
+			    $uploadOk = 0;
+			}
+
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+				$_SESSION['failure'] = "Sorry, file anda gagal di upload.";
+			    header('location: add_kelas.php');
+		    	exit();
+			// if everything is ok, try to upload file
+			} else {
+			    if (move_uploaded_file($_FILES["icon"]["tmp_name"], $target_file)) {
+			    	$_SESSION['success'] = "The file ". basename( $_FILES["icon"]["name"]). " has been uploaded.";
+			    } else {
+			        $_SESSION['failure'] = "Sorry, there was an error uploading your file.";
+				    header('location: add_kelas.php');
+			    	exit();
+			    }
+			}
+
+			$data_to_store['icon'] = $_FILES["icon"]["name"];
+	    }
+
+
 	
 	    $data_to_store['created_at'] = date('Y-m-d H:i:s');
 	    $data_to_store['updated_at'] = date('Y-m-d H:i:s');
@@ -25,6 +67,48 @@ class kelas_controller {
     public static function edit_kelas(){
     	// get input values
     	$data_to_update = filter_input_array(INPUT_POST);
+
+    	if (!empty($_FILES["icon"]["name"])) {
+	    	$target_dir = "../../uploads/";
+			$target_file = $target_dir . basename($_FILES["icon"]["name"]);
+			$uploadOk = 1;
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+			// Check file size
+			if ($_FILES["icon"]["size"] > 500000) {
+			    $_SESSION['failure'] = "Ukuran file anda terlalu besar";
+			    header('location: index.php');
+		    	exit();
+			    $uploadOk = 0;
+			}
+			// Allow certain file formats
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+			&& $imageFileType != "gif" ) {
+			    $_SESSION['failure'] = "File yang anda upload bukan gambar";
+			    header('location: index.php');
+		    	exit();
+			    $uploadOk = 0;
+			}
+
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+				$_SESSION['failure'] = "Sorry, file anda gagal di upload.";
+			    header('location: index.php');
+		    	exit();
+			// if everything is ok, try to upload file
+			} else {
+			    if (move_uploaded_file($_FILES["icon"]["tmp_name"], $target_file)) {
+			    	$_SESSION['success'] = "The file ". basename( $_FILES["icon"]["name"]). " has been uploaded.";
+			    } else {
+			        $_SESSION['failure'] = "Sorry, there was an error uploading your file.";
+				    header('location: index.php');
+			    	exit();
+			    }
+			}
+
+			$data_to_update['icon'] = $_FILES["icon"]["name"];
+	    }
+
+
    	    // Sanitize input post if we want
 	    $db = getDbInstance();
 	    $kelas_id=  filter_input(INPUT_GET, 'kelas_id',FILTER_VALIDATE_INT);

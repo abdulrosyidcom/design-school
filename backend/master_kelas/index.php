@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../../config/config.php';
-require_once '../../includes/auth_validate.php';
+require_once '../includes/auth_validate.php';
 require_once 'controllers/kelas_controller.php';
 
 //Only super admin is allowed to access this page
@@ -18,16 +18,6 @@ if (isset($_GET['delete_id'])) {
 
 if (isset($_GET['delete_item_id'])) {
     kelas_controller::delete_kelas_item($_GET['delete_item_id']);
-}
-
-
-//Get data from query string
-$search_string = filter_input(INPUT_GET, 'search_string');
-
-$page = filter_input(INPUT_GET, 'page');
-$pagelimit = 20;
-if ($page == "") {
-    $page = 1;
 }
 
 

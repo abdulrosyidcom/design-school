@@ -1,0 +1,22 @@
+
+.jumbotron h1 {
+	font-size: 60px;
+} 
+
+.jumbotron p {
+	font-size: 25px;
+}
+
+.superhero p {
+	font-size: 20px;
+}
+
+.superhero {
+	background-color: #0D243C;
+	color: white
+}
+
+.footer {
+	background-color: #0D243C;
+	color: white;
+}

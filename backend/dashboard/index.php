@@ -1,13 +1,18 @@
 <?php
 session_start();
 require_once '../../config/config.php';
-require_once '../../includes/auth_validate.php';
+require_once '../includes/auth_validate.php';
 
 //Get DB instance. function is defined in config.php
 $db = getDbInstance();
 
 //Get Dashboard information
-
+if ($_SESSION['role'] !== 'admin') {
+    // show permission denied message
+    header('HTTP/1.1 401 Unauthorized', true, 401);
+    
+    exit("401 Unauthorized");
+}
 
 require_once '../includes/header.php';
 ?>

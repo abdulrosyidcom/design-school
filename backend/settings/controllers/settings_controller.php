@@ -11,11 +11,11 @@ class settings_controller {
 	    // return status
 	    if($stat)
 	    {
-	        $_SESSION['success'] = "User has been updated successfully";
+	        $_SESSION['success'] = "Settings has been updated successfully";
 	    }
 	    else
 	    {
-	        $_SESSION['failure'] = "Failed to update Admin user";
+	        $_SESSION['failure'] = "Failed to update Settings";
 	    }
 	    
     }

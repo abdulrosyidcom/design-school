@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../../config/config.php';
-require_once '../../includes/auth_validate.php';
+require_once '../includes/auth_validate.php';
 require_once 'controllers/mading_controller.php';
 
 //Only super admin is allowed to access this page
@@ -115,7 +115,7 @@ include_once '../includes/header.php';
                     <?php if($row['status'] == 'waiting'){
                         echo "<span class='label label-warning'>Waiting</span>";
                     } elseif($row['status'] == 'approved'){
-                        echo "<span class='label label-primary'>Aproved</span>";
+                        echo "<span class='label label-primary'>Approved</span>";
                     }else{
                          echo "<span class='label label-danger'>Rejected</span>";
                     }?>
